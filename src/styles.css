@@ -16,6 +16,7 @@ body {
 .ui.grid {
   background-color: whitesmoke;
   margin: 0;
+  height: 100%;
 }
 
 .ui.column:not(:last-of-type) {
@@ -31,4 +32,8 @@ body {
 
 .header {
   text-align: center;
+}
+
+.task-list {
+  height: 95%;
 }

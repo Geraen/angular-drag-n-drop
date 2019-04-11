@@ -40,7 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.taskArray.map((t: ITask) => {
+    const data = window.localStorage.getItem('1tv.tasks') ? JSON.parse(window.localStorage.getItem('1tv.tasks')) : this.taskArray;
+    data.map((t: ITask) => {
       if (this.statusArray.indexOf(t.status) === -1) {
         this.statusArray.push(t.status);
       }
@@ -51,10 +52,11 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  changeStatus(task: ITask, status: TaskListHeader) {
+  changeStatus(task: ITask, status: string) {
     const taskIndex: number = this.taskArray.indexOf(task);
     this.taskArray[taskIndex].status = status;
-    this.saveToLS();
+
+    console.log(this.taskArray);
   }
 
   drop(event: CdkDragDrop<ITask[]>, status: string) {
@@ -64,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
     } else {
       moveItemInArray(this.statusObj[status], event.previousIndex, event.currentIndex);
     }
-    console.log(this.statusObj);
+    this.saveToLS();
     console.log(event);
   }
 

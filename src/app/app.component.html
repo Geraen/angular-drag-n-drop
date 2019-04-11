@@ -16,9 +16,9 @@
 <div class="ui stackable grid">
   <div class="ui five wide column">
     <h2 class="ui header">{{taskListHeader.todo}} ({{statusObj.todo.length}})</h2>
-    <div #todo="cdkDropList" (cdkDropListDropped)="drop($event, 'inprogress')" [cdkDropListConnectedTo]="inprogress"
-         [cdkDropListData]="statusObj.todo" cdkDropList>
-      <div *ngFor="let task of statusObj.todo" cdkDrag class="ui card">
+    <div (cdkDropListDropped)="drop($event, 'todo')" [cdkDropListConnectedTo]="inprogress" [cdkDropListData]="statusObj['todo']"
+         cdkDropList class="task-list">
+      <div *ngFor="let task of statusObj['todo']" cdkDrag class="ui card">
         <div class="content">
           <div [innerText]="task.text" class="description"></div>
         </div>
@@ -27,9 +27,9 @@
   </div>
   <div class="ui five wide column">
     <h2 class="ui header">{{taskListHeader.inprogress}} ({{statusObj.inprogress.length}})</h2>
-    <div #inprogress="cdkDropList" (cdkDropListDropped)="drop($event, 'done')" [cdkDropListConnectedTo]="done"
-         [cdkDropListData]="statusObj.inprogress" cdkDropList>
-      <div *ngFor="let task of statusObj.inprogress" cdkDrag class="ui card">
+    <div #inprogress="cdkDropList" (cdkDropListDropped)="drop($event, 'inprogress')" [cdkDropListConnectedTo]="done" [cdkDropListData]="statusObj['inprogress']"
+         cdkDropList class="task-list">
+      <div *ngFor="let task of statusObj['inprogress']" cdkDrag class="ui card">
         <div class="content">
           <div [innerText]="task.text" class="description"></div>
         </div>
@@ -38,9 +38,9 @@
   </div>
   <div class="ui five wide column">
     <h2 class="ui header">{{taskListHeader.done}} ({{statusObj.done.length}})</h2>
-    <div #done="cdkDropList" (cdkDropListDropped)="drop($event, 'inprogress')" [cdkDropListConnectedTo]="inprogress"
-         [cdkDropListData]="statusObj.done" cdkDropList>
-      <div *ngFor="let task of statusObj.done" cdkDrag class="ui card">
+    <div #done="cdkDropList" (cdkDropListDropped)="drop($event, 'done')" [cdkDropListConnectedTo]="inprogress" [cdkDropListData]="statusObj['done']"
+         cdkDropList class="task-list">
+      <div *ngFor="let task of statusObj['done']" cdkDrag class="ui card">
         <div class="content">
           <div [innerText]="task.text" class="description"></div>
         </div>
